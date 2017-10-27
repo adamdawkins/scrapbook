@@ -6,7 +6,7 @@ import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import Hello from './ui/hello';
+import Scrapbook from './ui/scrapbook'
 
 const client = new ApolloClient({
   link: new HttpLink({uri: 'https://api.graph.cool/simple/v1/cj9aevygn0k240139xhkhjavg' }),
@@ -19,11 +19,7 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Hello />
+        <Scrapbook />
       </div>
     </ApolloProvider>
     );
