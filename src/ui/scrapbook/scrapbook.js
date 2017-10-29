@@ -8,11 +8,11 @@ const Scrapbook = ({ title, items }) => (
     {items ? (
     <div>
       <h2>Items</h2>
-      <ul>
+      <div>
         {items.map(item => 
           <ScrapbookItem item={item} key={item.link} />
         )}
-      </ul>
+      </div>
     </div>
       ): null}
   </div>
