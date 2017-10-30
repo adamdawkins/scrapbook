@@ -1,7 +1,14 @@
 import React from 'react'
-import { branch, renderComponent} from 'recompose'
+import { flattenProp, branch, renderComponent } from 'recompose'
 
-export const withLoadingComponent = branch(
+const withLoadingComponent = branch(
   ({ data: { loading }}) => loading,
   renderComponent(() => <p>Loading...</p>)
 )
+
+const flattenData = flattenProp('data')
+
+export {
+  withLoadingComponent,
+  flattenData,
+}

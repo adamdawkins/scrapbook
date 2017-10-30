@@ -1,0 +1,11 @@
+query getScrapbook {
+  Scrapbook(id:"cj9emfov71kps0143trfgwkk5") {
+    title
+    items {
+      id
+      title
+      link
+      body
+    }
+  }
+}
