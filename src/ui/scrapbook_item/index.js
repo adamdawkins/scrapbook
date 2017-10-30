@@ -1,4 +1,16 @@
 import React from 'react'
+import { Tweet } from 'react-twitter-widgets'
+import { branch, compose, renderComponent } from 'recompose'
+
+const renderTweet = branch(
+  ({ item: { link }}) => (link.indexOf('twitter') > -1),
+  renderComponent(({item: { link }}) => {
+    const splitLink = link.split('/')
+    const tweetId = splitLink[splitLink.length - 1]
+
+    return <Tweet tweetId={tweetId} />
+  })
+)
 
 const ScrapbookItem = ({item: { link, title, body } }) => (
   <div>
@@ -11,4 +23,6 @@ const ScrapbookItem = ({item: { link, title, body } }) => (
   </div>
 )
 
-export default ScrapbookItem
+export default (
+  renderTweet
+)(ScrapbookItem)
