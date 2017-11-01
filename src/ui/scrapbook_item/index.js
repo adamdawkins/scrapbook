@@ -12,17 +12,29 @@ const renderTweet = branch(
   })
 )
 
+const renderImage = branch(
+  ({ item: { link } }) => (link.indexOf('.jpg') > -1),
+  renderComponent(({ item: { link, title } }) => {
+    return (
+      <div className="card">
+        <img src={link} alt={title} />
+        <h2>{title}</h2>
+      </div>
+    )
+  })
+)
 const ScrapbookItem = ({item: { link, title, body } }) => (
   <div>
     <a href={link}>
-      <h2>
+      <h3>
         {title}
-      </h2>
+      </h3>
     </a>
     <p>{body}</p>
   </div>
 )
 
-export default (
-  renderTweet
+export default compose(
+  renderTweet,
+  renderImage
 )(ScrapbookItem)
