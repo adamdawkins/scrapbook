@@ -15,7 +15,7 @@ type Scrapbook @model {
 
 type Item @model {
   id: ID! @isUnique
-  title: String!
+  title: String
   link: String!
   body: String
 
