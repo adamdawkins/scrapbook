@@ -8,7 +8,11 @@ const renderTweet = branch(
     const splitLink = link.split('/')
     const tweetId = splitLink[splitLink.length - 1]
 
-    return <Tweet tweetId={tweetId} />
+    return (
+      <div className="item item--tweet">
+        <Tweet tweetId={tweetId} />
+      </div>
+    )
   })
 )
 
@@ -16,7 +20,7 @@ const renderImage = branch(
   ({ item: { link } }) => (link.indexOf('.jpg') > -1),
   renderComponent(({ item: { link, title } }) => {
     return (
-      <div className="card">
+      <div className="item">
         <img src={link} alt={title} />
         <h2>{title}</h2>
       </div>
@@ -24,7 +28,7 @@ const renderImage = branch(
   })
 )
 const ScrapbookItem = ({item: { link, title, body } }) => (
-  <div>
+  <div className="item">
     <a href={link}>
       <h3>
         {title}
